@@ -2,7 +2,7 @@
 const scene = new THREE.Scene()
 const renderer = new THREE.WebGLRenderer()
 const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000)
-const light = new THREE.DirectionalLight();
+const light = new THREE.DirectionalLight()
 
 scene.background = (new THREE.Color('white'))
 renderer.setSize(3 * window.innerWidth / 4, 3 * window.innerHeight / 4)
@@ -24,15 +24,15 @@ let phong = new THREE.MeshPhongMaterial({
     emissive: 0,
     specular: 0x070707,
     shininess: 100
-});
+})
 let basic = new THREE.MeshBasicMaterial({
     color: 'pink'
-});
+})
 let lambert = new THREE.MeshPhongMaterial({
     color: 'pink',
     reflectivity: .5,
     refractionRatio: 1
-});
+})
 
 //-----FUNCTIONALITY------//
 
@@ -42,8 +42,7 @@ let obj, currentShape, currentMesh
 currentShape = box
 currentMesh = phong
 obj = new THREE.Mesh(currentShape, currentMesh)
-//obj.translateZ(1)
-scene.add(light);
+scene.add(light)
 scene.add(obj)
 
 //methods for making the objects move
@@ -51,7 +50,6 @@ let bounceControl = false
 let up = true
 let animate = () => {
     requestAnimationFrame(animate)
-    obj.rotation.x += 0.01
     obj.rotation.y += 0.01
     if (bounceControl) {
         obj.rotation.x = 0
@@ -126,6 +124,5 @@ window.onload = () => {
             bounce.innerHTML = 'BOUNCE!'
         }
     }
-
     animate()
 }
